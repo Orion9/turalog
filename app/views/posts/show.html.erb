@@ -2,7 +2,9 @@
   <h3><%= @post.title %></h3>
   <small>by <i><%= @post.user.nil? ? 'None' : @post.user.name %></i> at <%= @post.created_at.to_time.strftime('%x, %X') %></small>
 </div>
-<%= raw @post.body %>
+<div class="post-body-content">
+  <%= raw @post.body %>
+</div>
 <p>
   <a href="javascript:history.back()"><< Back to safety</a>
 </p>
