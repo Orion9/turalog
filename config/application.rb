@@ -24,3 +24,5 @@ module Turalog
     config.active_record.raise_in_transactional_callbacks = true
   end
 end
+
+config.secret_key_base = ENV['SECRET_KEY_BASE']
