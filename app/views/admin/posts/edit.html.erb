@@ -25,8 +25,8 @@
 
         <div class="form-group">
           <%= form.label :author %>
-          <%= form.select :user_id, User.all.collect {|x| [x.name, x.id]}, {:include_blank => 'Select one'},
-                          class: 'form-control' %>
+          <h5><%= current_user.name %></h5>
+          <%= hidden_field_tag :user_id, current_user.id, class: 'form-control' %>
         </div>
 
         <div class="form-group">
