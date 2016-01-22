@@ -42,6 +42,15 @@ group :development do
   gem 'web-console', '~> 2.0'
 end
 
+group :development do
+  gem 'capistrano',         require: false
+  gem 'capistrano-rvm',     require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma',   require: false
+end
+
+gem 'puma'
 gem 'codemirror-rails', '~>5.6'
 gem 'summernote-rails', '~>0.7.1.0'
 gem 'font-awesome-sass'
@@ -51,7 +60,6 @@ gem 'mail_form'
 gem 'simple_form'
 gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap'
-gem 'bcrypt-ruby', :require => 'bcrypt'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
