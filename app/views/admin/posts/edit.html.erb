@@ -1,0 +1,54 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h5><b>Edit Post</b></h5>
+  </div>
+
+  <div class="panel-body">
+    <%= form_for [:admin, @post] do |form| %>
+        <!-- Error checking -->
+        <% if @post.errors.any? %>
+            <% @post.errors.full_messages.each do |message| %>
+                <div class="alert alert-danger"><%= message %></div>
+            <% end %>
+        <% end %>
+
+        <div class="form-group">
+          <%= form.label :title %>
+          <%= form.text_field :title, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :category %>
+          <%= form.select :category_id, Category.all.collect {|x| [x.name, x.id]}, {:include_blank => 'Select one'},
+                          class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :author %>
+          <%= form.select :user_id, User.all.collect {|x| [x.name, x.id]}, {:include_blank => 'Select one'},
+                          class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :tags %>
+          <%= form.text_area :tags, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :body %>
+          <%= form.text_area :body, class: 'summernote' %>
+        </div>
+
+        <%= form.submit 'Change it!', class: 'btn btn-primary' %>
+        <%= link_to 'Nevermind', admin_posts_path, class: 'btn btn-default' %>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  $('.summernote').summernote({
+    minHeight: null,             // set minimum height of editor
+    maxHeight: null,             // set maximum height of editor
+    focus: true                  // set focus to editable area after initializing summernote
+  });
+</script>

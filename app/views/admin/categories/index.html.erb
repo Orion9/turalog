@@ -1,0 +1,38 @@
+<div class="page-header">
+  <h1>turalog/ <small>categories</small></h1>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title" style="float:left"><b>Manage Categories</b></h3>
+    <%= link_to "Add New", new_admin_category_path, class:'btn btn-default pull-right' %>
+    <div class="clearfix"></div>
+  </div>
+  <div class="panel-body">
+    <% if @categories.exists? %>
+      <table class="table table-bordered">
+        <tr>
+          <th>Category Title</th>
+          <th>Actions</th>
+        </tr>
+        <tr>
+          <% @categories.each do |category| %>
+          <td><%= category.name %></td>
+          <td>
+            <%= link_to "Edit", edit_admin_category_path(category), class: 'btn btn-success' %>
+            <%= link_to "Delete", admin_category_path(category), class: 'btn btn-danger',
+                        method: :delete, data: {confirm: 'Are you ready?'} %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+
+        <div class="pagination pull-right">
+          <%= will_paginate @categories, renderer: BootstrapPagination::Rails %>
+        </div>
+
+    <% else %>
+        <p>There are no categories.</p>
+    <% end %>
+  </div>
+</div>

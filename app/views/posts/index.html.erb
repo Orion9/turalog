@@ -1,0 +1,19 @@
+    <% if @posts.exists? %>
+      <% @posts.each_slice(2) do |post| %>
+        <div class="row marketing">
+          <% post.each do |post| %>
+              <div class="col-lg-6">
+                <div class="post-content">
+                  <h4><%= post.title %></h4>
+                  <h6><i><%= post.created_at.to_time.strftime('%x, %X') %> by
+                    <%= post.user.nil? ? 'None' : post.user.name %></i></h6>
+                  <p><%= raw post.body.truncate(200) %></p>
+                  <p><%= link_to "Read more >>", post_path(post), class: 'pull-right' %></p>
+                </div>
+              </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+        <p>Fucks given: 0, Posts sent: 0</p>
+    <% end %>

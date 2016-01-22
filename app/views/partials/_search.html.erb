@@ -1,0 +1,16 @@
+<%
+    form_action = posts_path
+    form_placeholder = 'Search Posts'
+%>
+
+<%= form_tag(form_action, :method => 'get', id: 'search-form',
+             class: 'navbar-form  navbar-right pull-right') do %>
+    <div class="form-group">
+      <div class="input-group">
+        <%= text_field_tag(:search, params[:search], placeholder: form_placeholder, class: 'form-control') %>
+        <span class="input-group-btn">
+                  <%= submit_tag('Go', :name => nil, class: 'btn btn-default') %>
+                </span>
+      </div>
+    </div>
+<% end %>

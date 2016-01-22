@@ -1,0 +1,41 @@
+<div class="page-header">
+  <h1>turalog/ <small>posts</small></h1>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title" style="float:left"><b>Manage Posts</b></h3>
+    <%= link_to "Create New", new_admin_post_path, class: 'btn btn-default pull-right' %>
+    <div class="clearfix"></div>
+  </div>
+  <div class="panel-body">
+    <% if @posts.exists? %>
+        <table class="table table-bordered">
+          <tr>
+            <th>Post Title</th>
+            <th>Post Category</th>
+            <th>Date Created</th>
+            <th>Actions</th>
+          </tr>
+          <% @posts.each do |post| %>
+              <tr>
+                <td><%= post.title %></td>
+                <td><%= post.category.name %></td>
+                <td><%= post.created_at.to_time.strftime('%B %e at %l:%M %p') %>
+                <td>
+                  <%=link_to "Edit", edit_admin_post_path(post), class:'btn btn-success' %>
+                  <%=link_to "Delete", admin_post_path(post), class:'btn btn-danger',
+                             method: :delete, data: { confirm: 'Are you ready?' } %>
+                </td>
+              </tr>
+          <% end %>
+        </table>
+        <div class="pagination pull-right">
+          <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+        </div>
+    <% else %>
+        <p>There are no posts</p>
+    <% end %>
+  </div>
+</div>
+
