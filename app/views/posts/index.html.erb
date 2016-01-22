@@ -3,11 +3,15 @@
         <div class="row marketing">
           <% post.each do |post| %>
               <div class="col-lg-6">
-                <div class="post-content">
+                <div class="post-title">
                   <h4><%= post.title %></h4>
                   <h6><i><%= post.created_at.to_time.strftime('%x, %X') %> by
                     <%= post.user.nil? ? 'None' : post.user.name %></i></h6>
-                  <p><%= raw post.body.truncate(200) %></p>
+                </div>
+                <div class="post-content">
+                    <div>
+                      <%= raw post.body.truncate(200) %>
+                    </div>
                   <p><%= link_to "Read more >>", post_path(post), class: 'pull-right' %></p>
                 </div>
               </div>
