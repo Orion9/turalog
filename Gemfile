@@ -60,6 +60,7 @@ gem 'mail_form'
 gem 'simple_form'
 gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap'
+gem "nokogiri", '>= 1.6.7.rc'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

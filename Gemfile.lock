@@ -202,6 +202,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   mail_form
+  nokogiri (>= 1.6.7.rc)
   puma
   rails (= 4.2.5)
   sass-rails (~> 5.0)
