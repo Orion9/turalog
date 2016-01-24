@@ -11,7 +11,7 @@
    */
 
    var disqus_config = function () {
-   this.page.url = 'http://orion9.io/posts/id' + <%= post_id %>; // Replace PAGE_URL with your page's canonical URL variable
+   this.page.url = 'http://orion9.io/posts/<%= post_id %>'; // Replace PAGE_URL with your pages canonical URL variable
    this.page.identifier = 'o9io.' + Math.random().toString() + '.id.' + <%= post_id %>; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
    };
 
